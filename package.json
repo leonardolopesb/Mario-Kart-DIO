@@ -1,19 +1,19 @@
 {
-  "name": "dio",
+  "name": "mariokart",
   "version": "1.0.0",
-  "description": "dio meutudo",
+  "description": "um projeto via node.js da DIO",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leonardolopesb/DIO-meutudo.git"
+    "url": "git+https://github.com/leonardolopesb/Mario-Kart-DIO.git"
   },
   "author": "Leonardo Braga",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/leonardolopesb/DIO-meutudo/issues"
+    "url": "https://github.com/leonardolopesb/Mario-Kart-DIO/issues"
   },
-  "homepage": "https://github.com/leonardolopesb/DIO-meutudo#readme"
+  "homepage": "https://github.com/leonardolopesb/Mario-Kart-DIO#readme"
 }
