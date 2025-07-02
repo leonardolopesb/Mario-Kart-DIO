@@ -84,7 +84,7 @@ async function getRandomBlock() {
 
 async function logRollResult(characterName, block, diceResult, attribute) {
   console.log(
-    `${characterName} jogou um dado 🎲 de número ${diceResult} no bloco de ${block}. Como o ${characterName} já possui ${attribute} pontos de ${block}, soma = ${
+    `${characterName} jogou um dado 🎲 de número ${diceResult} no bloco de ${block}. Como o ${characterName} já possui ${attribute} pontos de ${block}, ${diceResult} + ${attribute} = ${
       diceResult + attribute
     }`
   );
@@ -181,7 +181,7 @@ async function playRaceEngine(character1, character2) {
           console.log(`${character2.NOME} venceu o confronto, mas ${character1.NOME} não tem pontos para perder! 🐢`);
         }
       } else {
-        console.log(`O confronto terminou empatado! Nenhum ponto foi perdido 🐢`);
+        console.log(`O confronto terminou empatado! Nenhum ponto foi perdido. 🐢`);
       }
     }
 
@@ -192,6 +192,9 @@ async function playRaceEngine(character1, character2) {
     } else if (playerSkill2 > playerSkill1) {
       console.log(`${character2.NOME} marcou um ponto!`);
       character2.PONTOS++;
+    } else {
+        if(block !== "CONFRONTO")
+          console.log(`A rodada terminou empatada! Nenhum ponto foi marcado.`);
     }
 
     console.log(
