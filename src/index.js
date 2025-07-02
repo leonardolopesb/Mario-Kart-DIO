@@ -47,6 +47,21 @@ const Bowser = {
   PONTOS: 0,
 };
 
+// Função pra sortear os personagens
+async function getRandomCharacter() {
+  const characters = [Mario, Luigi, Peach, Yoshi, DonkeyKong, Bowser];
+  const player1 = Math.floor(Math.random() * characters.length);
+
+  // Removendo o personagem sorteado para o player1 para garantir que o player2 seja diferente
+  let player2;
+
+  do {
+    player2 = Math.floor(Math.random() * characters.length);
+  } while (player2 === player1);
+
+  return [characters[player1], characters[player2]];
+}
+
 // Função para sortear o número do dado (de 1 a 6)
 async function getRollDiceNumber() {
   return Math.floor(Math.random() * 6) + 1;
@@ -66,3 +81,19 @@ async function getRandomBlock() {
 
   return block;
 }
+
+async function logRollResult(characterName, block, diceResult, attribute) {
+  console.log(
+    `${characterName} jogou um dado 🎲 de número ${diceResult} no bloco ${block} + ${attribute} = ${
+      diceResult + attribute
+    }`
+  );
+}
+
+(async function main() {
+  const [player1, player2] = await getRandomCharacter();
+
+  console.log(
+    `🏁🚨 Vai começar a corrida!\nOs jogadores escolhidos foram: ${player1.NOME} e ${player2.NOME}`
+  );
+})();
