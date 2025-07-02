@@ -185,7 +185,7 @@ async function playRaceEngine(character1, character2) {
       }
     }
 
-    // Verificando o vencedor da rodada
+    // Declarando o vencedor da rodada
     if (playerSkill1 > playerSkill2) {
       console.log(`${character1.NOME} marcou um ponto!`);
       character1.PONTOS++;
@@ -208,6 +208,20 @@ async function playRaceEngine(character1, character2) {
   }
 }
 
+// Função para declarar o vencedor da corrida
+async function declareWinner(character1, character2) {
+  console.log("\nResultado final:\n");
+  console.log(`${character1.NOME}: ${character1.PONTOS} ponto(s)`);
+  console.log(`${character2.NOME}: ${character2.PONTOS} ponto(s)\n`);
+
+  if (character1.PONTOS > character2.PONTOS)
+    console.log(`\n${character1.NOME} venceu a corrida! Parabéns! 🏆`);
+  else if (character2.PONTOS > character1.PONTOS)
+    console.log(`\n${character2.NOME} venceu a corrida! Parabéns! 🏆`);
+  else console.log("A corrida terminou em empate! Nenhum vencedor desta vez! 🏁");
+}
+
+// Função auto-declarável principal para iniciar o jogo
 (async function main() {
   const [player1, player2] = await getRandomCharacter();
 
@@ -216,4 +230,5 @@ async function playRaceEngine(character1, character2) {
   );
 
   await playRaceEngine(player1, player2);
+  await declareWinner(player1, player2);
 })();
