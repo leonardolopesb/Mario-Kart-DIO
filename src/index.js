@@ -82,6 +82,7 @@ async function getRandomBlock() {
   return block;
 }
 
+// Função para registrar o resultado do dado
 async function logRollResult(characterName, block, diceResult, attribute) {
   console.log(
     `${characterName} jogou um dado 🎲 de número ${diceResult} no bloco de ${block}. Como o ${characterName} já possui ${attribute} pontos de ${block}, ${diceResult} + ${attribute} = ${
@@ -92,7 +93,7 @@ async function logRollResult(characterName, block, diceResult, attribute) {
 
 async function playRaceEngine(character1, character2) {
   for (let round = 1; round <= 5; round++) {
-    console.log(`\t\t\t🏁 ${round}ª rodada\n`);
+    console.log(`\t\t---------------------------\n\n\t\t\t🏁 ${round}ª rodada\n\n\t\t---------------------------\n`);
 
     // Sorteando o bloco de corrida
     let block = await getRandomBlock();
@@ -187,23 +188,26 @@ async function playRaceEngine(character1, character2) {
 
     // Declarando o vencedor da rodada
     if (playerSkill1 > playerSkill2) {
+      console.log(`\nNo total da rodada, ${character1.NOME} possui mais pontos em ${block} do que ${character2.NOME}!`);
       console.log(`${character1.NOME} marcou um ponto!`);
       character1.PONTOS++;
-    } else if (playerSkill2 > playerSkill1) {
+    }
+    
+    else if (playerSkill2 > playerSkill1) {
+      console.log(`\nNo total da rodada, ${character2.NOME} possui mais pontos em ${block} do que ${character1.NOME}!`);
       console.log(`${character2.NOME} marcou um ponto!`);
       character2.PONTOS++;
-    } else {
-        if(block !== "CONFRONTO")
-          console.log(`A rodada terminou empatada! Nenhum ponto foi marcado.`);
+    }
+    
+    else {
+        if(block !== "CONFRONTO") console.log(`A rodada terminou empatada! Nenhum ponto foi marcado.`);
     }
 
     console.log(
-      `\nPlacar: ${character1.NOME} - ${character1.PONTOS} | ${character2.NOME} - ${character2.PONTOS}`
+      `\nPlacar: ${character1.NOME} - ${character1.PONTOS} | ${character2.NOME} - ${character2.PONTOS}\n`
     );
 
-    if(round != 5)
-      console.log("\n\t\t---------------------------\n\n\t\tVamos para uma nova rodada!\n\n\t\t---------------------------\n");
-    else
+    if(round == 5)
       console.log("\n\t\t---------------------------\n\n\t\tFim da corrida! 🚨🚨🚨🚨🚨\n\n\t\t---------------------------\n");
   }
 }
@@ -215,20 +219,26 @@ async function declareWinner(character1, character2) {
   console.log(`${character2.NOME}: ${character2.PONTOS} ponto(s)\n`);
 
   if (character1.PONTOS > character2.PONTOS)
-    console.log(`\n${character1.NOME} venceu a corrida! Parabéns! 🏆`);
+    console.log(`${character1.NOME} venceu a corrida contra ${character2.NOME} por ${character1.PONTOS - character2.PONTOS} ponto(s) de diferença!\nParabéns ${character1.NOME}! 🏆`);
+
   else if (character2.PONTOS > character1.PONTOS)
-    console.log(`\n${character2.NOME} venceu a corrida! Parabéns! 🏆`);
-  else console.log("A corrida terminou em empate! Nenhum vencedor desta vez! 🏁");
+    console.log(`${character2.NOME} venceu a corrida contra ${character1.NOME} por ${character2.PONTOS - character1.PONTOS} ponto(s) de diferença!\nParabéns ${character2.NOME}! 🏆`);
+
+  else console.log("A corrida terminou em empate! Não tivemos nenhum vencedor! 🥇🥇🏁");
 }
 
 // Função auto-declarável principal para iniciar o jogo
 (async function main() {
   const [player1, player2] = await getRandomCharacter();
 
+  // Função para revelar os jogadores escolhidos
   console.log(
     `\n🏁🚨 Vai começar a corrida!\nOs jogadores escolhidos foram: ${player1.NOME} e ${player2.NOME}\n`
   );
 
+  // Função para executar a corrida
   await playRaceEngine(player1, player2);
+
+  // Função para declarar o vencedor
   await declareWinner(player1, player2);
 })();
