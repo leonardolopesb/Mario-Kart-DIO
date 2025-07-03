@@ -3,7 +3,7 @@
 <table>
     <tr>
         <td>
-            <img src="./img/header.gif" alt="Header do Mario Kart" margin="auto" width="200px">
+            <img src="./img/header.gif" alt="Header do Mario Kart" style="display: block; margin: 0 auto;" width="100px">
         </td>
         <td>
             <p>Um mini-jogo de corrida consolidado em Node.js e seus fundamentos com personagens inspirados no universo do Mario. É uma interação divertida que envolve sorte, confrontos e atributos como velocidade, manobrabilidade e poder.
@@ -168,4 +168,12 @@ Para executar o jogo corretamente, você precisa ter:
 - ✅ Node.js instalado (versão 14 ou superior)
 - ✅ Um terminal compatível com UTF-8 para exibir os emojis sem nenhum bug visual 🎲 🏁 🏆
 
-<img src="./img/ending.gif" alt="Header do Mario Kart" margin="0 auto" width="400px">
+<img src="./img/ending.gif" alt="Header do Mario Kart" width="400px" style="display: block; margin: 1rem auto;" />
+
+<h2>🖊️ Autor</h2>
+
+[<img src='https://avatars.githubusercontent.com/u/54039202?v=4' width = 300><br><sub>Leonardo Lopes Braga</sub>](https://github.com/Elelebe)
+
+<h2>📝 Licença</h2>
+
+Licenciado pelo [MIT License](./LICENSE).
