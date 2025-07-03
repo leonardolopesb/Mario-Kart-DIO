@@ -3,7 +3,7 @@
 <table>
     <tr>
         <td>
-            <img src="./img/header.gif" alt="Header do Mario Kart" style="display: block; margin: 0 auto;" width="100px">
+            <img src="./img/header.gif" alt="Header do Mario Kart" style="display: block; margin: 0 auto;" width="20150px">
         </td>
         <td>
             <p>Um mini-jogo de corrida consolidado em Node.js e seus fundamentos com personagens inspirados no universo do Mario. É uma interação divertida que envolve sorte, confrontos e atributos como velocidade, manobrabilidade e poder.
